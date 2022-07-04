@@ -19,16 +19,16 @@
 
 <?php
 
-mysql_connect("localhost","root","password");
-mysql_selectdb("simplelogin");
+$sql=mysqli_connect("localhost","root","","simple login");
+
 
 if(isset($_POST['submit']))
 {
     $un=$_POST['username'];
     $pw=$_POST['password'];
-    $sql=mysql_query("select password from user where username='$un'");
+    $result=mysqli_query($sql,"select password from user where username='$un'");
     
-    if($row=mysql_fetch_array($sql))
+    if($row=mysqli_fetch_array($result))
     {
         if($pw==$row['password'])
         {
